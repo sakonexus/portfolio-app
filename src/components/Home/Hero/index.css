@@ -1,0 +1,15 @@
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2rem); /* Adjust the distance as needed */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.scroll-down-text {
+  animation: moveDown 2s ease-in-out infinite; /* Adjust the duration and timing function as needed */
+}
