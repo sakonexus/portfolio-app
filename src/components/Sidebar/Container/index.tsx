@@ -35,9 +35,9 @@ const Container = () => {
   return (
     <div
       id={SIDEBAR_CONTAINER_ID}
-      className={`z-50 w-3/12 bg-sky-800 bg-opacity-65 backdrop-filter backdrop-blur-sm	 min-h-full fixed justify-center flex ease-in-out duration-700 rounded-tr-xl rounded-br-xl ${
+      className={`z-50 bg-sky-800 bg-opacity-65 backdrop-filter backdrop-blur-sm min-h-full fixed justify-center flex ease-in-out duration-700 rounded-tr-xl rounded-br-xl ${
         sidebarOpen ? '-translate-x-0' : '-translate-x-full'
-      }`}
+      } lg:w-3/12 sm:w-8/12`}
     >
       <div className="py-14 px-4 fixed">
         <SidebarItems />

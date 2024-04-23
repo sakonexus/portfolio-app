@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useGetViewportWidth } from '@/hooks/get-viewport-width.js';
+import { useGetViewportWidth } from '../../../../../../src/hooks/get-viewport-width.js';
 
 const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
   const dividerRef = useRef(null);

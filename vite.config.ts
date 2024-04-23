@@ -15,6 +15,7 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
       '@public': resolve(__dirname, './public'),
+      '@hooks': resolve(__dirname, './src/hooks'),
     },
   },
 });
