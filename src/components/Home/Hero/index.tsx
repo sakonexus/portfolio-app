@@ -11,7 +11,7 @@ const Hero = ({ heroRef }) => {
       id="am"
       className="bg-gradient-to-b from-sky-600 from-60% to-indigo-600 w-full h-screen flex justify-center"
     >
-      <div className="flex justify-start sm:flex-col lg:flex-row sm:w-full lg:w-8/12 ">
+      <div className="relative flex justify-start sm:flex-col lg:flex-row sm:top-0 sm:w-full lg:w-8/12 lg:top-[-7rem]">
         <div className="flex flex-col justify-center sm:px-16 sm:order-2 lg:order-1">
           <div className="w-full text-left">
             <h1 className=" font-semibold sm:text-5xl 2xl:text-7xl">

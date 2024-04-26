@@ -45,11 +45,11 @@ const Container = () => {
       <div className="w-full">&nbsp;</div>
       <div className="flex items-center sticky justify-center h-screen">
         <div
-          className={`fixed top-auto bg-white bg-opacity-50 rounded-full drop-shadow-lg transition ease-in-out duration-700 ${
+          className={`fixed top-auto bg-white bg-opacity-50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-700 ${
             sidebarOpen ? '' : 'absolute translate-x-4'
           }`}
         >
-          <div className="w-24 h-24">
+          <div className="sm:w-16 sm:h-16  lg:w-24 lg:h-24">
             <button
               onClick={(event) => {
                 toggleSidebar(event);

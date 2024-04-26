@@ -9,7 +9,7 @@ const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
 
   const { viewportWidth } = useGetViewportWidth();
 
-  const dividerOffset = viewportWidth > 700 ? 300 : 100;
+  const dividerOffset = viewportWidth > 955 ? 300 : 100;
 
   useEffect(() => {
     const handleScroll = () => {

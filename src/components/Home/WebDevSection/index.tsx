@@ -16,6 +16,7 @@ import bsImg from '../../../../public/images/i/wd-examples/icons/bootstrap.svg';
 import scImg from '../../../../public/images/i/wd-examples/icons/styled-components.png';
 import SimpleCard from './SimpleCard';
 import SimpleDetailCard from './SimpleCard/SimpleDetailCard/index.js';
+import { useModal } from '@/hooks/use-modal.jsx';
 
 const cardDetails = {
   icons: [
@@ -40,14 +41,14 @@ const cardDetails = {
       iconName: 'React',
     },
     {
-      iconPath: mongoDBImg,
-      iconId: 'mongodb',
-      iconName: 'MongoDB',
-    },
-    {
       iconPath: nextjsImg,
       iconId: 'nextjs',
       iconName: 'NextJS',
+    },
+    {
+      iconPath: mongoDBImg,
+      iconId: 'mongodb',
+      iconName: 'MongoDB',
     },
     {
       iconPath: bsImg,
@@ -95,16 +96,33 @@ const cardDetails = {
 };
 
 const WebDevSection = ({ section1 }) => {
-  const [selectedCard, setSelectedCard] = useState(null);
   const { elementInView } = useElementInView(section1);
   const [sectionDividerHeight, setSectionDividerHeight] = useState(0);
+  const [assignModal, setAssignModal] = useState<null | React.ReactElement>(
+    null
+  );
+
+  const { modalOpen, setModalOpen, toggle, modalElement } =
+    useModal(assignModal);
 
   const cardOnClick = (e) => {
     e.preventDefault();
-
     const cardId = e.target.id;
 
-    selectedCard == cardId ? setSelectedCard(null) : setSelectedCard(cardId);
+    cardDetails.cards.map((item) => {
+      if (cardId === item.id) {
+        setAssignModal(
+          <SimpleDetailCard
+            title={item.cardTitle}
+            body={item.cardBody}
+            modalOpen={modalOpen}
+            toggle={toggle}
+          />
+        );
+      }
+    });
+
+    toggle();
   };
 
   return (
@@ -116,52 +134,55 @@ const WebDevSection = ({ section1 }) => {
         paddingBottom: `${sectionDividerHeight}px`,
       }}
     >
-      <div className="w-8/12">
-        <div className="flex flex-col w-full">
-          <div className="relative">
-            <h1 className={`font-semibold text-white text-7xl leading-tight`}>
+      <div className="lg:w-8/12 sm:w-full">
+        <div className="flex flex-col w-full sm:px-8 lg:px-0">
+          <div className="relative z-10">
+            <h1
+              className={`font-semibold text-white leading-tight sm:text-5xl lg:text-7xl`}
+            >
               Scratch Skating
             </h1>
-            <p className="text-xl text-white mt-4">
-              This is where I put stuff about the Scratch Skating web app
+            <p className="text-xl text-white my-8">
+              Scratch Skating<sup>&trade;</sup> was built with one goal in mind:
+              to bring new skaters up to speed with the ins and outs of
+              skateboarding. This was my passion project which took me over a
+              year to develop. It was my first true project that I worked on
+              after learning the basics of coding with React. After watching
+              several tutorials and building mundane to-do lists, I took this on
+              to challenge myself and learn how to code at a fundamental level.
+              It's far from perfect, but it's my first app that I developed from
+              ground up and was able to publish for the masses.
             </p>
           </div>
-          <div className="w-full flex justify-center h-0">
-            <h2 className="absolute top-[9.4rem] bg-emerald-600 bg-opacity-70 rounded rounded-tr-xl rounded-tl-xl p-4 text-3xl font-semibold text-white text-center mr-8">
+          <div className="relative mt-14 flex flex-row flex-nowrap justify-center">
+            <h2 className="absolute z-20 top-[-40px] bg-emerald-700 bg-opacity-70 rounded rounded-tr-xl rounded-tl-xl p-4 text-3xl font-semibold text-white text-center">
               Tech Stack
             </h2>
-          </div>
-          <div className="mt-14 flex flex-row flex-nowrap bg-opacity-50 bg-white rounded-xl pb-4 overflow-x-auto items-stretch scrollbar-hide lg:justify-start xl:justify-center">
-            {cardDetails.icons.map((icon) => {
-              return (
-                <div className="flex flex-col flex-shrink-0 justify-end items-center mx-4">
-                  <img className="w-24 mt-4" src={icon.iconPath} />
-                  <p className="text-center font-semibold">{icon.iconName}</p>
-                </div>
-              );
-            })}
+            <div className="relative z-10 flex flex-row flex-nowrap bg-opacity-50 bg-white rounded-xl pb-4 overflow-x-auto items-stretch scrollbar-hide md:justify-start xl:justify-center">
+              {cardDetails.icons.map((icon) => {
+                return (
+                  <div className="flex flex-col flex-shrink-0 justify-end items-center mx-4">
+                    <img className="w-24 mt-4" src={icon.iconPath} />
+                    <p className="text-center font-semibold">{icon.iconName}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-        <div className="w-full flex-col mt-12">
-          <div className="relative flex flex-row flex-wrap justify-center items-center">
+        <div className="w-full flex-col mt-12 sm:px-8 lg:px-0">
+          <h3 className="text-white font-semibold pb-4 sm:text-3xl lg:text-5xl">
+            Features
+          </h3>
+          <div className="relative flex flex-row flex-wrap items-center sm:justify-center lg:justify-between">
             {cardDetails.cards.map((item) => {
               return (
                 <SimpleCard
                   imgPath={item.cardImage}
                   cardId={item.id}
                   cardOnClick={cardOnClick}
-                />
-              );
-            })}
-          </div>
-          <div className="relative mt-8">
-            {cardDetails.cards.map((item) => {
-              return (
-                <SimpleDetailCard
-                  title={item.cardTitle}
-                  body={item.cardBody}
-                  cardId={item.id}
-                  selectedCard={selectedCard}
+                  cardTitle={item.cardTitle}
+                  setModalOpen={setModalOpen}
                 />
               );
             })}
@@ -172,6 +193,7 @@ const WebDevSection = ({ section1 }) => {
         parentRef={section1}
         setSectionDividerHeight={setSectionDividerHeight}
       />
+      {modalElement}
     </div>
   );
 };

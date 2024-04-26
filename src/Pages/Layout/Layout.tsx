@@ -1,6 +1,7 @@
 import Sidebar from '../../components/Sidebar';
 import { useIntersectionObserver } from '../../hooks/intersection-observer.js';
-import { MutableRefObject } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction, useState } from 'react';
+import Modal from '@/components/Modal/index.js';
 
 interface LayoutProps {
   content?: JSX.Element;
@@ -14,7 +15,7 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <>
-      <div className="flex">
+      <div className="">
         <Sidebar />
         <div className="w-full">{content ? content : <>none</>}</div>
       </div>
