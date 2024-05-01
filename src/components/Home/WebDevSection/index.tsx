@@ -105,6 +105,14 @@ const cardDetails = {
       cardDescription: 'trick-gen description',
       cardUrl: 'https://www.scratchskating.com/skate-academy/trick-generator',
     },
+    {
+      id: 'sotd',
+      cardImage: trickGenImg,
+      cardTitle: 'Skater of the Day',
+      cardBody: 'Skater of the day body.',
+      cardDescription: 'Skater of the day description',
+      cardUrl: 'https://www.scratchskating.com/skater-of-the-day',
+    },
   ],
 };
 
@@ -157,11 +165,11 @@ const WebDevSection = ({ section1 }) => {
         paddingBottom: `${sectionDividerHeight}px`,
       }}
     >
-      <div className="lg:w-8/12 sm:w-full">
-        <div className="flex flex-col w-full sm:px-8 lg:px-0">
+      <div className="w-full lg:w-8/12">
+        <div className="flex flex-col w-full px-8 lg:px-0">
           <div className="relative z-10">
             <h1
-              className={`font-semibold text-white leading-tight sm:text-5xl lg:text-7xl`}
+              className={`font-semibold text-white leading-tight text-5xl lg:text-7xl`}
             >
               Scratch Skating
             </h1>
@@ -178,14 +186,14 @@ const WebDevSection = ({ section1 }) => {
             </p>
           </div>
           <div className="relative mt-14 flex flex-row flex-nowrap justify-center">
-            <h2 className="absolute z-20 top-[-40px] bg-emerald-700 bg-opacity-70 rounded rounded-tr-xl rounded-tl-xl p-4 text-3xl font-semibold text-white text-center">
+            <h2 className="absolute z-20 top-[-40px] bg-emerald-700 bg-opacity-70 rounded rounded-tr-xl rounded-tl-xl p-4 text-2xl font-semibold text-white text-center xl:text-3xl">
               Tech Stack
             </h2>
-            <div className="relative z-10 flex flex-row flex-nowrap bg-opacity-50 bg-white rounded-xl pb-4 overflow-x-auto items-stretch scrollbar-hide md:justify-start xl:justify-center">
+            <div className="relative z-10 flex flex-row flex-nowrap bg-opacity-50 bg-white rounded-xl pt-4 pb-4 overflow-x-auto items-stretch scrollbar-hide md:justify-start xl:justify-center">
               {cardDetails.icons.map((icon) => {
                 return (
                   <div className="flex flex-col flex-shrink-0 justify-end items-center mx-4">
-                    <img className="w-24 mt-4" src={icon.iconPath} />
+                    <img className="w-16 mt-4 xl:w-20" src={icon.iconPath} />
                     <p className="text-center font-semibold">{icon.iconName}</p>
                   </div>
                 );
@@ -193,18 +201,19 @@ const WebDevSection = ({ section1 }) => {
             </div>
           </div>
         </div>
-        <div className="w-full flex-col mt-12 sm:px-8 lg:px-0">
-          <h3 className="text-white font-semibold pb-4 sm:text-3xl lg:text-5xl">
+        <div className="w-full flex-col mt-12 px-8 lg:px-0">
+          <h3 className="text-white font-semibold pb-4 text-3xl lg:text-5xl">
             Features
           </h3>
-          <div className="relative flex flex-row items-center lg:flex-nowrap sm:flex-wrap sm:justify-center lg:justify-between">
-            {cardDetails.cards.map((item) => {
+          <div className="relative flex flex-row items-start flex-wrap justify-center">
+            {cardDetails.cards.map((item, index) => {
               return (
                 <SimpleCard
                   imgPath={item.cardImage}
                   cardId={item.id}
                   cardOnClick={cardOnClick}
                   cardTitle={item.cardTitle}
+                  index={index}
                 />
               );
             })}

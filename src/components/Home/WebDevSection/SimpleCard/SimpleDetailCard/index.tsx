@@ -105,7 +105,7 @@ const SimpleDetailCard = ({
           <h4 className="text-2xl font-semibold">Description</h4>
           <p className="text-lg pt-4">{cardDescription}</p>
         </div>
-        <div className="absolute top-0 right-0 mt-12 mr-8 sm:mt-4 sm:mr-4 sm:scale-75">
+        <div className="absolute top-0 right-0 mt-4 mr-4 scale-75 xl:mt-8 xl:mr-8">
           <button
             onClick={(e) => {
               e.preventDefault();

@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 
-const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick }) => {
+const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick, index }) => {
   return (
-    <div className="relative mb-8 sm:w-1/2 sm:px-2 lg:basis-1">
-      <div className="w-full flex flex-col justify-center items-center">
-        <div className="rounded-xl sm:w-full sm:h-full lg:w-52 lg:h-52">
+    <div
+      key={`${index}-${cardId}`}
+      className={`mx-6 relative mb-16 w-1/3 xl:flex-1 xl:w-1/4 `}
+    >
+      <div
+        className={`flex flex-col justify-center items-center w-32 xl:w-full`}
+      >
+        <div
+          className={`rounded-xl w-full h-full lg:w-52 lg:h-52 ${
+            index == 4 ? 'xl:self-end' : index == 5 ? 'xl:self-start' : ''
+          }`}
+        >
           <div className="relative z-20">
             <img
               id={cardId}
@@ -16,9 +25,11 @@ const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick }) => {
               alt=""
             />
           </div>
-        </div>
-        <div className="text-center font-semibold text-white tracking-wider">
-          {cardTitle}
+          <div
+            className={`mt-1 text-center font-semibold text-white tracking-wider leading-tight`}
+          >
+            {cardTitle}
+          </div>
         </div>
       </div>
     </div>
