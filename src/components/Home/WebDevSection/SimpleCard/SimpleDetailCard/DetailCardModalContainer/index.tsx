@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalContainer = ({ modalContent, modalOpen }) => {
+const DetailCardModalContainer = ({ modalOpen, children }) => {
   return (
     <div
       id="modal-container"
@@ -13,9 +13,9 @@ const ModalContainer = ({ modalContent, modalOpen }) => {
           : 'width 0.25s ease-in-out 0.3s, height 0.25s ease-in-out',
       }}
     >
-      {modalContent}
+      {children}
     </div>
   );
 };
 
-export default ModalContainer;
+export default DetailCardModalContainer;

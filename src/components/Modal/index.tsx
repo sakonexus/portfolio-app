@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import ModalContainer from './ModalContainer';
 
 const Modal = ({ modalOpen, setModalOpen, children }) => {
   const closeModal = (e) => {
-    e.preventDefault();
     e.target.id == 'modal-overlay' && setModalOpen(false);
   };
 
@@ -18,11 +16,7 @@ const Modal = ({ modalOpen, setModalOpen, children }) => {
         modalOpen ? 'bg-black bg-opacity-40 visible ' : 'invisible '
       }`}
     >
-      <ModalContainer
-        setModalOpen={setModalOpen}
-        modalOpen={modalOpen}
-        modalContent={children}
-      />
+      {children}
     </div>
   );
 };

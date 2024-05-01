@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 
-const SimpleCard = ({
-  imgPath,
-  cardId,
-  cardTitle,
-  cardOnClick,
-  setModalOpen,
-}) => {
+const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick }) => {
   return (
     <div className="relative mb-8 sm:w-1/2 sm:px-2 lg:basis-1">
       <div className="w-full flex flex-col justify-center items-center">

@@ -116,9 +116,9 @@ const WebDevSection = ({ section1 }) => {
       title=""
       body=""
       modalOpen={false}
-      toggle={() => false}
       cardDescription=""
       cardUrl=""
+      setModalOpen={() => false}
     />
   );
 
@@ -205,7 +205,6 @@ const WebDevSection = ({ section1 }) => {
                   cardId={item.id}
                   cardOnClick={cardOnClick}
                   cardTitle={item.cardTitle}
-                  setModalOpen={setModalOpen}
                 />
               );
             })}
