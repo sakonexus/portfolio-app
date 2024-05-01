@@ -4,7 +4,7 @@ import React from 'react';
 
 export const useModal = (modalChildElement) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalElement, setModalElement] = useState(null);
+  const [modalElement, setModalElement] = useState(modalChildElement);
   const toggle = () => setModalOpen(!modalOpen);
 
   useEffect(() => {
@@ -13,8 +13,6 @@ export const useModal = (modalChildElement) => {
         ...modalChildElement.props,
         modalOpen: modalOpen,
       });
-
-      console.log('enhancedModalElement', enhancedModalElement);
 
       modalChildElement &&
         setModalElement(

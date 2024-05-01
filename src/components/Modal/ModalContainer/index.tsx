@@ -4,8 +4,8 @@ const ModalContainer = ({ modalContent, modalOpen }) => {
   return (
     <div
       id="modal-container"
-      className={`bg-white absolute rounded-xl drop-shadow-md shadow-slate-700 ${
-        modalOpen ? 'w-[75rem] h-[50rem]' : 'w-0 h-[0.5rem]'
+      className={`bg-white absolute rounded-xl drop-shadow-md shadow-slate-700 overflow-y-scroll lg:overflow-hidden ${
+        modalOpen ? 'w-3/4 h-3/4' : 'w-0 h-[0.5rem]'
       }`}
       style={{
         transition: modalOpen

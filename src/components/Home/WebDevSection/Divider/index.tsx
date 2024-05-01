@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGetViewportWidth } from '@/hooks/get-viewport-width.js';
 
-const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
+const WebDevSectionDivider = ({ parentRef, setSectionDividerHeight }) => {
   const dividerRef = useRef(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const [maxTranslateY, setMaxTranslateY] = useState(0);
@@ -9,7 +9,7 @@ const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
 
   const { viewportWidth } = useGetViewportWidth();
 
-  const dividerOffset = viewportWidth > 955 ? 300 : 100;
+  const dividerOffset = viewportWidth > 935 ? 300 : 100;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,8 +32,11 @@ const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
         setSvgPathIndex(4);
       }
 
-      setMaxTranslateY(maxY);
+      setMaxTranslateY(maxY + 3);
     };
+
+    // Initialize scroll position on component mount
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
 
@@ -60,7 +63,7 @@ const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
       style={{
         transform: `translateY(${translateY - dividerOffset}px)`,
         transition:
-          'translate 100ms ease-in-out, top 100ms linear, bottom 1ms linear',
+          'translate 500ms ease-in-out, top 1ms linear, bottom 1ms linear',
       }}
     >
       <svg
@@ -94,4 +97,4 @@ const WebDevSectionDividerTEST = ({ parentRef, setSectionDividerHeight }) => {
   );
 };
 
-export default WebDevSectionDividerTEST;
+export default WebDevSectionDivider;

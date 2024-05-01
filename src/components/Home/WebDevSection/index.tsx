@@ -66,31 +66,44 @@ const cardDetails = {
       id: 'trick-book',
       cardImage: trickBookImg,
       cardTitle: 'Trick Book',
-      cardBody: 'This is Scratch Skating.',
+      cardBody:
+        'The trick book allows users to search for various tricks and provides a video with description informing them how to perform the trick.',
+      cardDescription:
+        'trick-book description. this one is longer in order to see how the functionality of the modal works when given more text. i should probably concat this at some point to avoid too much info being shown immediately.',
+      cardUrl: 'https://www.scratchskating.com/skate-academy/trick-book',
     },
     {
       id: 'skate-game',
       cardImage: skateGameImg,
       cardTitle: 'Game of Skate',
       cardBody: 'Game of skate copy',
+      cardDescription: 'skate-game description',
+      cardUrl: 'https://www.scratchskating.com/skate-game',
     },
     {
       id: 'board-anatomy',
       cardImage: boardAnatomyImg,
       cardTitle: 'Skateboard Anatomy',
       cardBody: 'Skateboard Anatomy copy',
+      cardDescription: 'skate-game description',
+      cardUrl:
+        'https://www.scratchskating.com/skate-academy/skateboard-anatomy',
     },
     {
       id: 'skate-101',
       cardImage: obstaclesImg,
       cardTitle: 'Skateboarding 101',
       cardBody: 'Skateboarding 101 copy',
+      cardDescription: 'skate-101 description',
+      cardUrl: 'https://www.scratchskating.com/skate-academy/basics',
     },
     {
       id: 'trick-gen',
       cardImage: trickGenImg,
       cardTitle: 'Trick Generator',
       cardBody: 'Trick Generator copy',
+      cardDescription: 'trick-gen description',
+      cardUrl: 'https://www.scratchskating.com/skate-academy/trick-generator',
     },
   ],
 };
@@ -98,8 +111,15 @@ const cardDetails = {
 const WebDevSection = ({ section1 }) => {
   const { elementInView } = useElementInView(section1);
   const [sectionDividerHeight, setSectionDividerHeight] = useState(0);
-  const [assignModal, setAssignModal] = useState<null | React.ReactElement>(
-    null
+  const [assignModal, setAssignModal] = useState<React.ReactElement>(
+    <SimpleDetailCard
+      title=""
+      body=""
+      modalOpen={false}
+      toggle={() => false}
+      cardDescription=""
+      cardUrl=""
+    />
   );
 
   const { modalOpen, setModalOpen, toggle, modalElement } =
@@ -116,7 +136,10 @@ const WebDevSection = ({ section1 }) => {
             title={item.cardTitle}
             body={item.cardBody}
             modalOpen={modalOpen}
-            toggle={toggle}
+            setModalOpen={setModalOpen}
+            imagePath={trickBookImg}
+            cardDescription={item.cardDescription}
+            cardUrl={item.cardUrl}
           />
         );
       }
@@ -174,7 +197,7 @@ const WebDevSection = ({ section1 }) => {
           <h3 className="text-white font-semibold pb-4 sm:text-3xl lg:text-5xl">
             Features
           </h3>
-          <div className="relative flex flex-row flex-wrap items-center sm:justify-center lg:justify-between">
+          <div className="relative flex flex-row items-center lg:flex-nowrap sm:flex-wrap sm:justify-center lg:justify-between">
             {cardDetails.cards.map((item) => {
               return (
                 <SimpleCard
