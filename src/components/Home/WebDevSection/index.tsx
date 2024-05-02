@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import WebDevSectionDivider from '../WebDevSection/Divider';
-import { useElementInView } from '../../../hooks/element-in-view.js';
-import trickBookImg from '@public/images/i/wd-examples/trick-book.png';
-import skateGameImg from '@public/images/i/wd-examples/skate-game.png';
-import boardAnatomyImg from '@public/images/i/wd-examples/skateboard-anatomy.png';
-import obstaclesImg from '@public/images/i/wd-examples/skate-obstacles.png';
-import trickGenImg from '@public/images/i/wd-examples/trick-gen.png';
+import { useElementInView } from '@hooks/element-in-view.js';
 import mongoDBImg from '../../../../public/images/i/wd-examples/icons/mongodb.svg';
 import cssImg from '../../../../public/images/i/wd-examples/icons/css3.svg';
 import htmlImg from '../../../../public/images/i/wd-examples/icons/html5.svg';
@@ -63,59 +58,6 @@ const cardDetails = {
       iconName: 'Styled Components',
     },
   ],
-  cards: [
-    {
-      id: 'trick-book',
-      cardImage: trickBookImg,
-      cardTitle: 'Trick Book',
-      cardBody:
-        'The trick book allows users to search for various tricks and provides a video with description informing them how to perform the trick.',
-      cardDescription:
-        'trick-book description. this one is longer in order to see how the functionality of the modal works when given more text. i should probably concat this at some point to avoid too much info being shown immediately.',
-      cardUrl: 'https://www.scratchskating.com/skate-academy/trick-book',
-    },
-    {
-      id: 'skate-game',
-      cardImage: skateGameImg,
-      cardTitle: 'Game of Skate',
-      cardBody: 'Game of skate copy',
-      cardDescription: 'skate-game description',
-      cardUrl: 'https://www.scratchskating.com/skate-game',
-    },
-    {
-      id: 'board-anatomy',
-      cardImage: boardAnatomyImg,
-      cardTitle: 'Skateboard Anatomy',
-      cardBody: 'Skateboard Anatomy copy',
-      cardDescription: 'skate-game description',
-      cardUrl:
-        'https://www.scratchskating.com/skate-academy/skateboard-anatomy',
-    },
-    {
-      id: 'skate-101',
-      cardImage: obstaclesImg,
-      cardTitle: 'Skateboarding 101',
-      cardBody: 'Skateboarding 101 copy',
-      cardDescription: 'skate-101 description',
-      cardUrl: 'https://www.scratchskating.com/skate-academy/basics',
-    },
-    {
-      id: 'trick-gen',
-      cardImage: trickGenImg,
-      cardTitle: 'Trick Generator',
-      cardBody: 'Trick Generator copy',
-      cardDescription: 'trick-gen description',
-      cardUrl: 'https://www.scratchskating.com/skate-academy/trick-generator',
-    },
-    {
-      id: 'sotd',
-      cardImage: trickGenImg,
-      cardTitle: 'Skater of the Day',
-      cardBody: 'Skater of the day body.',
-      cardDescription: 'Skater of the day description',
-      cardUrl: 'https://www.scratchskating.com/skater-of-the-day',
-    },
-  ],
 };
 
 interface WebDevCardDataProps {
@@ -149,6 +91,7 @@ const WebDevSection = ({ section1 }) => {
       cardDescription=""
       cardUrl=""
       setModalOpen={() => false}
+      imageUrl=""
     />
   );
 
@@ -240,10 +183,7 @@ const WebDevSection = ({ section1 }) => {
             Features
           </h3>
           <div className="relative flex flex-row items-start flex-wrap justify-center">
-            {/* {loading ? <Spinner /> : cardData.map()} */}
-
-            {cardData &&
-              cardData.length > 0 &&
+            {cardData && cardData.length > 0 && !loading ? (
               cardData.map((item, index) => {
                 return (
                   <SimpleCard
@@ -254,7 +194,10 @@ const WebDevSection = ({ section1 }) => {
                     index={index}
                   />
                 );
-              })}
+              })
+            ) : (
+              <Spinner size="lg" />
+            )}
           </div>
         </div>
       </div>
