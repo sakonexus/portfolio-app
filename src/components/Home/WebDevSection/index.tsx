@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WebDevSectionDivider from '../WebDevSection/Divider';
 import { useElementInView } from '../../../hooks/element-in-view.js';
 import trickBookImg from '@public/images/i/wd-examples/trick-book.png';
@@ -17,6 +17,8 @@ import scImg from '../../../../public/images/i/wd-examples/icons/styled-componen
 import SimpleCard from './SimpleCard';
 import SimpleDetailCard from './SimpleCard/SimpleDetailCard/index.js';
 import { useModal } from '@/hooks/use-modal.jsx';
+import { getWebDevCards, getImageUrl } from '@/api/sanity-client.js';
+import Spinner from '@/components/Spinner/index.js';
 
 const cardDetails = {
   icons: [
@@ -116,7 +118,27 @@ const cardDetails = {
   ],
 };
 
+interface WebDevCardDataProps {
+  cardBody: string;
+  cardDescription: string;
+  cardImage: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+    _type: string;
+  };
+  cardTitle: string;
+  cardUrl: string;
+  id: string;
+  _key: string;
+}
+
 const WebDevSection = ({ section1 }) => {
+  const [cardData, setCardData] = useState<null | Array<WebDevCardDataProps>>(
+    null
+  );
+  const [loading, setLoading] = useState(true);
   const { elementInView } = useElementInView(section1);
   const [sectionDividerHeight, setSectionDividerHeight] = useState(0);
   const [assignModal, setAssignModal] = useState<React.ReactElement>(
@@ -137,24 +159,36 @@ const WebDevSection = ({ section1 }) => {
     e.preventDefault();
     const cardId = e.target.id;
 
-    cardDetails.cards.map((item) => {
-      if (cardId === item.id) {
-        setAssignModal(
-          <SimpleDetailCard
-            title={item.cardTitle}
-            body={item.cardBody}
-            modalOpen={modalOpen}
-            setModalOpen={setModalOpen}
-            imagePath={trickBookImg}
-            cardDescription={item.cardDescription}
-            cardUrl={item.cardUrl}
-          />
-        );
-      }
-    });
+    cardData &&
+      cardData.length > 0 &&
+      cardData.map((item) => {
+        if (cardId === item.id) {
+          setAssignModal(
+            <SimpleDetailCard
+              title={item.cardTitle}
+              body={item.cardBody}
+              modalOpen={modalOpen}
+              setModalOpen={setModalOpen}
+              imageUrl={getImageUrl(item.cardImage.asset._ref)}
+              cardDescription={item.cardDescription}
+              cardUrl={item.cardUrl}
+            />
+          );
+        }
+      });
 
     toggle();
   };
+
+  useEffect(() => {
+    getWebDevCards().then((data) => {
+      if (data) {
+        setCardData(data[0].cards);
+        setLoading(false);
+        console.log(data);
+      }
+    });
+  }, []);
 
   return (
     <div
@@ -206,17 +240,21 @@ const WebDevSection = ({ section1 }) => {
             Features
           </h3>
           <div className="relative flex flex-row items-start flex-wrap justify-center">
-            {cardDetails.cards.map((item, index) => {
-              return (
-                <SimpleCard
-                  imgPath={item.cardImage}
-                  cardId={item.id}
-                  cardOnClick={cardOnClick}
-                  cardTitle={item.cardTitle}
-                  index={index}
-                />
-              );
-            })}
+            {/* {loading ? <Spinner /> : cardData.map()} */}
+
+            {cardData &&
+              cardData.length > 0 &&
+              cardData.map((item, index) => {
+                return (
+                  <SimpleCard
+                    imgUrl={getImageUrl(item.cardImage.asset._ref)}
+                    cardId={item.id}
+                    cardOnClick={cardOnClick}
+                    cardTitle={item.cardTitle}
+                    index={index}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>

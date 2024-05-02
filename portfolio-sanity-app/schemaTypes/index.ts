@@ -1,2 +1,3 @@
 import page from '../schemas/page'
-export const schemaTypes = [page]
+import webDevCards from '../schemas/webDevCards'
+export const schemaTypes = [page, webDevCards]

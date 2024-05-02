@@ -8,6 +8,7 @@ interface SimpleDetailCardProps {
   setModalOpen: (arg0: boolean) => void;
   imagePath?: string;
   cardDescription: string;
+  imageUrl: string;
   cardUrl: string;
 }
 
@@ -16,7 +17,7 @@ const SimpleDetailCard = ({
   body,
   modalOpen,
   setModalOpen,
-  imagePath,
+  imageUrl,
   cardDescription,
   cardUrl,
 }: SimpleDetailCardProps) => {
@@ -31,7 +32,7 @@ const SimpleDetailCard = ({
               className={`w-full drop-shadow-lg shadow-md shadow-slate-300 rounded-xl ${
                 modalOpen ? 'opacity-100' : 'opacity-0'
               }`}
-              src={imagePath}
+              src={imageUrl}
               alt={title}
               style={{
                 transition: modalOpen

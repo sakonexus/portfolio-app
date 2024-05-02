@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick, index }) => {
+const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }) => {
   return (
     <div
       key={`${index}-${cardId}`}
@@ -21,7 +21,7 @@ const SimpleCard = ({ imgPath, cardId, cardTitle, cardOnClick, index }) => {
                 cardOnClick(e);
               }}
               className="w-full h-full rounded-xl"
-              src={imgPath}
+              src={imgUrl}
               alt=""
             />
           </div>
