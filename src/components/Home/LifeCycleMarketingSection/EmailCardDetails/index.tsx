@@ -1,65 +1,28 @@
+import ModalContainer from '@/components/Modal/ModalContainer';
 import AnchorLink from '@/components/AnchorLink';
 import { PortableText } from '@portabletext/react';
-import { TypedObject } from 'sanity';
-import ModalContainer from '@/components/Modal/ModalContainer';
+import { EmailCardDataProps } from '..';
 
-interface SimpleDetailCardProps {
-  title: string;
-  body: TypedObject | TypedObject[];
+interface EmailCardDetailsProps {
   modalOpen: boolean;
   setModalOpen: (arg0: boolean) => void;
-  imagePath?: string;
-  imageUrl: string;
-  cardUrl: string;
+  cardData: EmailCardDataProps;
 }
 
-const SimpleDetailCard = ({
-  title,
-  body,
+const EmailCardDetails = ({
   modalOpen,
   setModalOpen,
-  imageUrl,
-  cardUrl,
-}: SimpleDetailCardProps) => {
+  cardData,
+}: EmailCardDetailsProps) => {
   return (
     <ModalContainer modalOpen={modalOpen}>
       <div
         className={`text-left w-full flex flex-col justify-center py-8 px-4 lg:py-12 lg:px-8`}
       >
-        <div className="w-full flex justify-center sm:flex-col lg:flex-row sm:mt-8">
-          <div className=" relative lg:w-4/12">
-            <img
-              className={`w-full drop-shadow-lg shadow-md shadow-slate-300 rounded-xl ${
-                modalOpen ? 'opacity-100' : 'opacity-0'
-              }`}
-              src={imageUrl}
-              alt={title}
-              style={{
-                transition: modalOpen
-                  ? 'opacity 1s ease-out 200ms'
-                  : 'opacity 0.1s linear',
-              }}
-            />
+        <div className="w-full flex justify-center sm:flex-col sm:mt-8">
+          <div className="w-full lg:pl-12 ">
             <div
-              style={{
-                transition: modalOpen
-                  ? 'opacity 1s ease-out 500ms'
-                  : 'opacity 0.1s linear',
-              }}
-              className={`mt-6 sm:text-center ${
-                modalOpen ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <AnchorLink
-                classList={`block cursor-pointer text-blue-600 text-2xl font-semibold `}
-                url={cardUrl}
-                text="Visit"
-              />
-            </div>
-          </div>
-          <div className="sm:w-full lg:w-8/12 lg:pl-12 ">
-            <div
-              className={` sm:text-center sm:mt-4 lg:text-left ${
+              className={` sm:text-center sm:mt-4 ${
                 modalOpen ? 'opacity-1' : 'opacity-0'
               }`}
               style={{
@@ -78,7 +41,7 @@ const SimpleDetailCard = ({
                     : 'opacity 0.1s linear',
                 }}
               >
-                {title}
+                {cardData.cardTitle}
               </h3>
               <div
                 className={`text-xl pt-8 sm:pt-4 ${
@@ -90,9 +53,41 @@ const SimpleDetailCard = ({
                     : 'opacity 0.1s linear',
                 }}
               >
-                <PortableText value={body} />
+                <PortableText value={cardData.cardBody} />
               </div>
             </div>
+          </div>
+          <div className="flex w-full justify-center">
+            <div
+              style={{
+                transition: modalOpen
+                  ? 'opacity 1s ease-out 500ms'
+                  : 'opacity 0.1s linear',
+              }}
+              className={`flex flex-col mt-6 text-center ${
+                modalOpen ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center">
+                <AnchorLink
+                  classList={`flex cursor-pointer text-blue-600 text-2xl font-semibold items-center`}
+                  url={cardData.githubUrl}
+                  text="View in Browser"
+                  icon={<span className="material-icons">open_in_new</span>}
+                />
+              </div>
+              <div className="flex flex-row items-center justify-center pt-2">
+                <AnchorLink
+                  classList={`flex cursor-pointer text-blue-600 text-2xl font-semibold items-center`}
+                  url={cardData.githubCodeUrl}
+                  text="View Code"
+                  icon={<span className="material-icons">open_in_new</span>}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="overflow-hidden border-t-2 border-gray-400 mt-8">
+            <iframe className="w-full h-[40rem]" src={cardData.githubUrl} />
           </div>
         </div>
         <div className="absolute top-0 right-0 mt-4 mr-4 scale-75 xl:mt-8 xl:mr-8">
@@ -119,4 +114,4 @@ const SimpleDetailCard = ({
   );
 };
 
-export default SimpleDetailCard;
+export default EmailCardDetails;

@@ -1,6 +1,11 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-const DetailCardModalContainer = ({ modalOpen, children }) => {
+interface ModalContainer {
+  modalOpen: boolean;
+  children: ReactNode;
+}
+
+const ModalContainer = ({ modalOpen, children }: ModalContainer) => {
   return (
     <div
       id="modal-container"
@@ -20,4 +25,4 @@ const DetailCardModalContainer = ({ modalOpen, children }) => {
   );
 };
 
-export default DetailCardModalContainer;
+export default ModalContainer;

@@ -1,7 +1,6 @@
 import Sidebar from '../../components/Sidebar';
 import { useIntersectionObserver } from '../../hooks/intersection-observer.js';
-import { Dispatch, MutableRefObject, SetStateAction, useState } from 'react';
-import Modal from '@/components/Modal/index.js';
+import { MutableRefObject } from 'react';
 
 interface LayoutProps {
   content?: JSX.Element;

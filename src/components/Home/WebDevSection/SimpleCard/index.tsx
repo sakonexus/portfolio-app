@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-
 const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }) => {
   return (
     <div
       key={`${index}-${cardId}`}
-      className={`mx-6 relative mb-16 w-1/3 xl:flex-1 xl:w-1/4 `}
+      className={`mx-6 relative mb-16 w-1/3 xl:flex-1 xl:w-1/4 group hover:cursor-pointer`}
     >
       <div
         className={`flex flex-col justify-center items-center w-32 xl:w-full`}
@@ -14,13 +12,13 @@ const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }) => {
             index == 4 ? 'xl:self-end' : index == 5 ? 'xl:self-start' : ''
           }`}
         >
-          <div className="relative z-20">
+          <div className="relative z-20 w-36 h-36 lg:w-52 lg:h-52 overflow-hidden rounded-xl">
             <img
               id={cardId}
               onClick={(e) => {
                 cardOnClick(e);
               }}
-              className="w-full h-full rounded-xl"
+              className="absolute w-full h-full object-cover"
               src={imgUrl}
               alt=""
             />

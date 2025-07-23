@@ -23,3 +23,8 @@ export function getImageUrl(imageRef: string) {
 
   return builtImageUrl;
 }
+
+export async function getEmailCards() {
+  const emailCards = await sanityClient.fetch('*[_type == "emailCards"]');
+  return emailCards;
+}

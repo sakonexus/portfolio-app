@@ -19,12 +19,12 @@ const Container = () => {
         setSidebarOpen(!isScrolledDown);
     };
 
-    // window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [sidebarOpen]);
 
   const toggleSidebar = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const Container = () => {
   return (
     <div
       id={SIDEBAR_CONTAINER_ID}
-      className={`z-50 bg-sky-800 bg-opacity-65 backdrop-filter backdrop-blur-sm min-h-full fixed justify-center flex ease-in-out duration-700 rounded-tr-xl rounded-br-xl ${
+      className={`z-[999] bg-sky-800/65 backdrop-filter backdrop-blur-xs min-h-full fixed justify-center flex ease-in-out duration-700 rounded-tr-xl rounded-br-xl ${
         sidebarOpen ? '-translate-x-0' : '-translate-x-full'
       } lg:w-3/12 sm:w-8/12`}
     >
@@ -45,7 +45,7 @@ const Container = () => {
       <div className="w-full">&nbsp;</div>
       <div className="flex items-center sticky justify-center h-screen">
         <div
-          className={`fixed top-auto bg-white bg-opacity-50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-700 ${
+          className={`fixed top-auto bg-white/50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-700 ${
             sidebarOpen ? '' : 'absolute translate-x-4'
           }`}
         >
@@ -54,9 +54,7 @@ const Container = () => {
               onClick={(event) => {
                 toggleSidebar(event);
               }}
-              className={`focus:outline-none transform transition-transform duration-500 ${
-                sidebarOpen ? 'scale-x-[-1]' : 'scale-x-1'
-              } `}
+              className={`focus:outline-none transform transition-transform duration-500  ${ sidebarOpen && 'scale-x-[-1]'}`}
             >
               <img src={arrowRight} className={`w-full`} alt="Arrow" />
             </button>

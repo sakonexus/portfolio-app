@@ -10,8 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/public/*": ["public/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/hooks/*": ["src/hooks/*"]
     },
 
     /* Bundler mode */

@@ -13,7 +13,7 @@ const Modal = ({ modalOpen, setModalOpen, children }) => {
         closeModal(e);
       }}
       className={`z-[100] fixed inset-0 flex justify-center items-center transition-all overflow-hidden duration-700 ${
-        modalOpen ? 'bg-black bg-opacity-40 visible ' : 'invisible '
+        modalOpen ? 'bg-black/50 visible' : 'invisible '
       }`}
     >
       {children}

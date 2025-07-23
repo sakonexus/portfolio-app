@@ -16,7 +16,7 @@ const Button = ({
       <Link smooth to={`/#${elementId}`}>
         <button
           id={buttonId}
-          className="text-white text-lg rounded-3xl p-4 transition-shadow ease-in-out"
+          className="text-white text-lg rounded-full py-4 px-6 transition-shadow ease-in-out"
         >
           {title}
         </button>

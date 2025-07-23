@@ -10,15 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@portabletext/react": "^3.2.1",
+    "@portabletext/to-html": "^2.0.14",
     "@sanity/image-url": "^1.0.2",
+    "@tailwindcss/vite": "^4.1.11",
     "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
+    "postcss": "^8.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-hash-link": "^2.4.3",
     "sanity": "^3.30.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
@@ -30,7 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "react-router-dom": "^6.22.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   }

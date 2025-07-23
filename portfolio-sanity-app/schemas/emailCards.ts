@@ -1,6 +1,6 @@
 export default {
-  name: 'webDevCards',
-  title: 'Web Development Cards',
+  name: 'emailCards',
+  title: 'Email Cards',
   type: 'document',
   fields: [
     {
@@ -17,11 +17,6 @@ export default {
               title: 'Card ID',
             },
             {
-              name: 'cardImage',
-              type: 'image',
-              title: 'Card Image',
-            },
-            {
               name: 'cardTitle',
               type: 'string',
               title: 'Card Title',
@@ -33,9 +28,14 @@ export default {
               of: [{type: 'block'}],
             },
             {
-              name: 'cardUrl',
+              name: 'githubUrl',
               type: 'url',
-              title: 'Card URL',
+              title: 'Github URL',
+            },
+            {
+              name: 'githubCodeUrl',
+              type: 'url',
+              title: 'Github Code URL',
             },
           ],
         },

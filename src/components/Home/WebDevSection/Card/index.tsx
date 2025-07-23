@@ -27,7 +27,7 @@ const Card = ({
     <div
       id={`wd-cards-container-${cardId}`}
       onClick={(e) => selectCardOnClick(e)}
-      className={`flex flex-shrink-0 flex-grow-0 transition-transform`}
+      className={`flex shrink-0 grow-0 transition-transform`}
     >
       <div className="w-full flex flex-col">
         <div className="mt-4 mb-2 flex flex-row items-center">

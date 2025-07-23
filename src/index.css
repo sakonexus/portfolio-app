@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 .close-button {
   width: 3.2rem;
@@ -19,4 +17,38 @@
 }
 .close-button:after {
   transform: rotate(-45deg);
+}
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-sm: 260px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Custom Classes */
+  --shadow-link: 0px 0px 1.5rem 0.25rem rgba(255, 255, 255, 0.5);
+
+
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .scrollbar-default {
+    -ms-overflow-style: auto;
+    scrollbar-width: auto;
+  }
+
+  .scrollbar-default::-webkit-scrollbar {
+    display: block;
+  }
 }

@@ -19,25 +19,6 @@ function App() {
     section5,
   ];
 
-  // const QUERY = encodeURIComponent('*[_type == "page"]');
-
-  // const URL = `https://${
-  //   import.meta.env.VITE_SANITY_PROJECT_ID
-  // }.api.sanity.io/v2021-10-21/data/query/${
-  //   import.meta.env.VITE_SANITY_DATASET
-  // }?query=${QUERY}`;
-
-  // console.log('PROJECT ID', import.meta.env.VITE_SANITY_PROJECT_ID);
-
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then((res) => res.json())
-  //     .then(({ result }) => {
-  //       console.log(JSON.stringify(result));
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
   return (
     <>
       <Layout

@@ -1,18 +1,8 @@
 import WebDevSection from '../WebDevSection';
 
-const Section = ({ section2, section3, section4, section5 }) => {
+const Section = ({ section3, section4, section5 }) => {
   return (
     <>
-      <div
-        ref={section2}
-        id="dme"
-        className="flex bg-white w-full h-screen items-center relative"
-        style={{ zIndex: '30' }}
-      >
-        <div className="flex text-center mx-auto align-middle">
-          direct marketing experience
-        </div>
-      </div>
       <div
         ref={section3}
         id="tik"
