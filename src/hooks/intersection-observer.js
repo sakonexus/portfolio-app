@@ -25,8 +25,11 @@ export const useIntersectionObserver = (observeItems) => {
         if (targetElement) {
           if (add) {
             targetElement.classList.add('shadow-link');
+            targetElement.classList.add('sidebar-selected');
           } else {
             targetElement.classList.remove('shadow-link');
+            targetElement.classList.remove('sidebar-selected');
+
           }
         }
       }

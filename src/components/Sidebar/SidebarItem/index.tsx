@@ -35,17 +35,9 @@ const SidebarLinks = [
 
 const SidebarItems = () => {
   const renderSidebarLinks = SidebarLinks.map((item, index) => {
-    return index == 0 ? (
+    return (
       <Button
-        containerClasses="sm:pt-4 sm:pb-8 lg:pb-16 lg:pt-8"
-        title={`${item.title}`}
-        elementId={`${item.elementId}`}
-        buttonId={item.buttonId}
-        key={index}
-      />
-    ) : (
-      <Button
-        containerClasses="sm:py-8 lg:py-16"
+        containerClasses={`${index == 0 ? 'sm:pt-4 sm:pb-8 lg:pb-16 lg:pt-8' : 'sm:py-8 lg:py-16' }`}
         title={`${item.title}`}
         elementId={`${item.elementId}`}
         buttonId={item.buttonId}

@@ -7,7 +7,7 @@ import paperPlaneImg from './assets/paper-plane.svg';
 import marketingImage from './assets/marketing-image.svg';
 import useWindowDimensions from '@/hooks/useWindowDimensions';
 import { useModal } from '@/hooks/use-modal.jsx';
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import EmailCardDetails from './EmailCardDetails';
 import { getEmailCards } from '@/api/sanity-client';
 import { TypedObject } from 'sanity';
@@ -40,7 +40,7 @@ export interface EmailCardDataProps {
   _key: string;
 }
 
-const LifeCycleMarketingSection = ({ section2 }) => {
+const LifeCycleMarketingSection = ({ section2 }: {section2: RefObject<HTMLDivElement>}) => {
   const { height, width, widthSize } = useWindowDimensions();
   const [cardData, setCardData] = useState<null | Array<EmailCardDataProps>>(
     null

@@ -4,12 +4,10 @@ import WebDevSection from './WebDevSection';
 import LifeCycleMarketingSection from './LifeCycleMarketingSection';
 
 interface HomeProps {
-  heroRef: any;
-  section1: React.ReactNode;
-  section2: React.ReactNode;
-  section3: React.ReactNode;
-  section4: React.ReactNode;
-  section5: React.ReactNode;
+  heroRef: React.RefObject<HTMLDivElement>;
+  section1: React.RefObject<HTMLDivElement>;
+  section2: React.RefObject<HTMLDivElement>;
+  section3: React.RefObject<HTMLDivElement>;
 }
 
 const Home = ({
@@ -17,15 +15,13 @@ const Home = ({
   section1,
   section2,
   section3,
-  section4,
-  section5,
 }: HomeProps) => {
   return (
     <div>
       <Hero heroRef={heroRef} />
       <WebDevSection section1={section1} />
       <LifeCycleMarketingSection section2={section2} />
-      <Section section3={section3} section4={section4} section5={section5} />
+      <Section section3={section3} />
     </div>
   );
 };

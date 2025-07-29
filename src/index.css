@@ -1,24 +1,5 @@
 @import "tailwindcss";
 
-.close-button {
-  width: 3.2rem;
-  height: 3.2rem;
-}
-.close-button:before,
-.close-button:after {
-  position: absolute;
-  content: ' ';
-  height: 2.2rem;
-  width: 0.1rem;
-  background-color: #000;
-}
-.close-button:before {
-  transform: rotate(45deg);
-}
-.close-button:after {
-  transform: rotate(-45deg);
-}
-
 @theme {
   /* Breakpoints */
   --breakpoint-sm: 260px;
@@ -29,8 +10,12 @@
 
   /* Custom Classes */
   --shadow-link: 0px 0px 1.5rem 0.25rem rgba(255, 255, 255, 0.5);
+}
 
-
+@layer components {
+  .sidebar-selected {
+    @apply bg-white/20;
+  }
 }
 
 @layer utilities {

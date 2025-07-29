@@ -7,16 +7,12 @@ function App() {
   const section1 = useRef(null);
   const section2 = useRef(null);
   const section3 = useRef(null);
-  const section4 = useRef(null);
-  const section5 = useRef(null);
 
   const observeItems: MutableRefObject<HTMLElement | null>[] = [
     heroRef,
     section1,
     section2,
     section3,
-    section4,
-    section5,
   ];
 
   return (
@@ -29,8 +25,6 @@ function App() {
             section1={section1}
             section2={section2}
             section3={section3}
-            section4={section4}
-            section5={section5}
           />
         }
       />

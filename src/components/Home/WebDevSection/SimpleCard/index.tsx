@@ -28,7 +28,7 @@ const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }: SimpleCar
               }}
               className="absolute w-full h-full object-cover"
               src={imgUrl}
-              alt=""
+              alt={cardTitle}
             />
           </div>
           <div

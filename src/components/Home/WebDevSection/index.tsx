@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, RefObject } from 'react';
 import WebDevSectionDivider from '../WebDevSection/Divider';
-import { useElementInView } from '@hooks/element-in-view.js';
+// import { useElementInView } from '@hooks/element-in-view.js';
 import mongoDBImg from '../../../../public/images/i/wd-examples/icons/mongodb.svg';
 import tslImg from '../../../../public/images/i/wd-examples/icons/typescript.svg';
 import nextjsImg from '../../../../public/images/i/wd-examples/icons/nextjs.svg';
@@ -70,12 +70,12 @@ interface WebDevCardDataProps {
   _key: string;
 }
 
-const WebDevSection = ({ section1 }) => {
+const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
   const [cardData, setCardData] = useState<null | Array<WebDevCardDataProps>>(
     null
   );
   const [loading, setLoading] = useState(true);
-  const { elementInView } = useElementInView(section1);
+  // const { elementInView } = useElementInView(section1);
   const [sectionDividerHeight, setSectionDividerHeight] = useState(0);
   const [assignModal, setAssignModal] = useState<React.ReactElement>(
     <SimpleDetailCard
@@ -91,9 +91,9 @@ const WebDevSection = ({ section1 }) => {
   const { modalOpen, setModalOpen, toggle, modalElement } =
     useModal(assignModal);
 
-  const cardOnClick = (e) => {
+  const cardOnClick = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
-    const cardId = e.target.id;
+    const cardId = (e.target as HTMLImageElement).id;
 
     cardData &&
       cardData.length > 0 &&
