@@ -10,7 +10,7 @@ const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }: SimpleCar
   return (
     <div
       key={`${index}-${cardId}`}
-      className={`mx-6 relative mb-16 w-1/3 xl:flex-1 xl:w-1/4 group hover:cursor-pointer`}
+      className={`relative mb-16 group hover:cursor-pointer hover:shadow-link transition-all duration-300 rounded-xl`}
     >
       <div
         className={`flex flex-col justify-center items-center w-32 xl:w-full`}

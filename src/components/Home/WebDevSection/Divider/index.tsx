@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { useGetViewportWidth } from '@/hooks/get-viewport-width.js';
 
-const WebDevSectionDivider = ({ parentRef, setSectionDividerHeight }) => {
-  const dividerRef = useRef(null);
+const WebDevSectionDivider = ({ parentRef, setSectionDividerHeight }: {parentRef: RefObject<HTMLDivElement>, setSectionDividerHeight: (arg0: number) => void}) => {
+  const dividerRef = useRef<HTMLDivElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const [maxTranslateY, setMaxTranslateY] = useState(0);
   const [svgPathIndex, setSvgPathIndex] = useState(0);
@@ -13,29 +13,33 @@ const WebDevSectionDivider = ({ parentRef, setSectionDividerHeight }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const parentHeight = parentRef.current.offsetHeight;
-      const dividerHeight = dividerRef.current.offsetHeight;
-      const maxY = parentHeight - dividerHeight;
-      const currentScrollY = window.scrollY;
-
-      setSectionDividerHeight(dividerHeight);
-
-      // Calculate the scroll percentage from top of page to parent element
-      const percentage = (currentScrollY / maxY) * 100;
-      setScrollPercentage(percentage);
-
-      // Determine the SVG path index based on the scroll percentage
-      const newIndex = Math.floor((percentage / 100) * 5); // Divide by number of SVG frames
-      setSvgPathIndex(newIndex);
-
-      if (currentScrollY > maxY) {
-        setSvgPathIndex(4);
+      if(
+        parentRef.current && dividerRef.current
+      ) {
+        const parentHeight = parentRef.current.offsetHeight;
+        const dividerHeight = dividerRef.current.offsetHeight;
+        const maxY = parentHeight - dividerHeight;
+        const currentScrollY = window.scrollY;
+  
+        setSectionDividerHeight(dividerHeight);
+  
+        // Calculate the scroll percentage from top of page to parent element
+        const percentage = (currentScrollY / maxY) * 100;
+        setScrollPercentage(percentage);
+  
+        // Determine the SVG path index based on the scroll percentage
+        const newIndex = Math.floor((percentage / 100) * 5); // Divide by number of SVG frames
+        setSvgPathIndex(newIndex);
+  
+        if (currentScrollY > maxY) {
+          setSvgPathIndex(4);
+        }
+  
+        setMaxTranslateY(maxY + 3);
       }
-
-      setMaxTranslateY(maxY + 3);
+      
     };
 
-    // Initialize scroll position on component mount
     handleScroll();
 
     window.addEventListener('scroll', handleScroll);
@@ -43,7 +47,7 @@ const WebDevSectionDivider = ({ parentRef, setSectionDividerHeight }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [parentRef, scrollPercentage]);
+  }, [parentRef, scrollPercentage, setSectionDividerHeight]);
 
   const translateY = Math.min(window.scrollY, maxTranslateY + dividerOffset); // Speed of SVG movement to bottom of parent element
 

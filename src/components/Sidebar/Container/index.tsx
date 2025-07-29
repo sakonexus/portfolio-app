@@ -44,16 +44,16 @@ const Container = () => {
       <div className="w-full">&nbsp;</div>
       <div className="flex items-center sticky justify-center h-screen">
         <div
-          className={`fixed top-auto bg-white/50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-700 ${
+          className={`fixed top-auto bg-white/50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-500 ${
             sidebarOpen ? '' : 'absolute translate-x-4'
           }`}
         >
-          <div className="sm:w-16 sm:h-16  lg:w-24 lg:h-24">
+          <div className="sm:w-16 sm:h-16 lg:w-24 lg:h-24 border-2 border-black/10 rounded-full shadow-md">
             <button
               onClick={(event) => {
                 toggleSidebar(event);
               }}
-              className={`focus:outline-none transform transition-transform duration-500  ${ sidebarOpen && 'scale-x-[-1]'}`}
+              className={`focus:outline-none transform transition-transform duration-300 ${ sidebarOpen && 'scale-x-[-1]'}`}
             >
               <span className='material-icons !text-8xl'>keyboard_arrow_right</span>
             </button>

@@ -163,11 +163,11 @@ const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
             </div>
           </div>
         </div>
-        <div className="w-full flex-col mt-12 px-8 lg:px-0">
-          <h3 className="text-white font-semibold pb-4 text-3xl lg:text-5xl">
+        <div className="w-full flex-col mt-12 sm:px-8 lg:px-0">
+          <h3 className="text-white font-semibold pb-8 text-3xl lg:text-5xl">
             Learn more
           </h3>
-          <div className="relative flex flex-row items-start flex-wrap justify-center">
+          <div className="relative flex flex-row items-start flex-wrap justify-start sm:gap-x-16 lg:gap-x-24">
             {cardData && cardData.length > 0 && !loading ? (
               cardData.map((item, index) => {
                 return (
