@@ -1,4 +1,12 @@
-const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }) => {
+interface SimpleCardProps {
+  imgUrl: string;
+  cardId: string;
+  cardTitle: string;
+  cardOnClick: (e: React.MouseEvent<HTMLImageElement>) => void;
+  index: number;
+}
+
+const SimpleCard = ({ imgUrl, cardId, cardTitle, cardOnClick, index }: SimpleCardProps) => {
   return (
     <div
       key={`${index}-${cardId}`}

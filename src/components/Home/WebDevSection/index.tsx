@@ -143,9 +143,7 @@ const WebDevSection = ({ section1 }) => {
               Scratch Skating
             </h1>
             <p className="text-2xl text-white my-8 xl:text-3xl">
-              Scratch Skating<sup>&trade;</sup> has been my passion project not
-              only to contribute to the skateboard community, but also to build
-              on my web development skills and have a deeper understanding of
+              Scratch Skating<sup>&trade;</sup> has been my passion project to contribute to the skateboard community and build on web development skills and have a deeper understanding of
               web technologies.
             </p>
           </div>

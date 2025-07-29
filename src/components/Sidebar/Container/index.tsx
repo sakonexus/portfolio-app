@@ -1,5 +1,4 @@
 import SidebarItems from '../SidebarItem';
-import arrowRight from '/icons/arrow-right.svg';
 import { useEffect, useState } from 'react';
 
 const SIDEBAR_CONTAINER_ID = 'sidebarContainer';
@@ -56,7 +55,7 @@ const Container = () => {
               }}
               className={`focus:outline-none transform transition-transform duration-500  ${ sidebarOpen && 'scale-x-[-1]'}`}
             >
-              <img src={arrowRight} className={`w-full`} alt="Arrow" />
+              <span className='material-icons !text-8xl'>keyboard_arrow_right</span>
             </button>
           </div>
         </div>

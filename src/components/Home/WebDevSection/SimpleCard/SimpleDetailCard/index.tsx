@@ -21,11 +21,32 @@ const SimpleDetailCard = ({
   imageUrl,
   cardUrl,
 }: SimpleDetailCardProps) => {
+
+  console.log('modalOpen', modalOpen)
+
   return (
     <ModalContainer modalOpen={modalOpen}>
       <div
-        className={`text-left w-full flex flex-col justify-center py-8 px-4 lg:py-12 lg:px-8`}
+        className={`text-left w-full flex flex-col justify-center py-8 px-4 lg:px-8`}
       >
+      <div className="flex justify-end items-center">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setModalOpen(false);
+          }}
+          className='hover:bg-black/20 rounded-full p-2 transition-all duration-300 w-16 h-16 hover:cursor-pointer'
+        >
+          <span className={`material-icons sm:!text-4xl lg:!text-5xl ${
+            modalOpen ? 'opacity-100' : 'opacity-0'
+          }`} 
+          style={{
+            transition: modalOpen
+              ? 'opacity 1s ease-out 300ms'
+              : 'opacity 0.1s linear',
+          }}>close</span>
+        </button>
+      </div>
         <div className="w-full flex justify-center sm:flex-col lg:flex-row sm:mt-8">
           <div className=" relative lg:w-4/12">
             <img
@@ -60,7 +81,7 @@ const SimpleDetailCard = ({
           <div className="sm:w-full lg:w-8/12 lg:pl-12 ">
             <div
               className={` sm:text-center sm:mt-4 lg:text-left ${
-                modalOpen ? 'opacity-1' : 'opacity-0'
+                modalOpen ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
                 transition: modalOpen
@@ -70,7 +91,7 @@ const SimpleDetailCard = ({
             >
               <h3
                 className={`font-bold text-4xl ${
-                  modalOpen ? 'opacity-1' : 'opacity-0'
+                  modalOpen ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
                   transition: modalOpen
@@ -82,7 +103,7 @@ const SimpleDetailCard = ({
               </h3>
               <div
                 className={`text-xl pt-8 sm:pt-4 ${
-                  modalOpen ? 'opacity-1' : 'opacity-0'
+                  modalOpen ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
                   transition: modalOpen
@@ -94,25 +115,6 @@ const SimpleDetailCard = ({
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute top-0 right-0 mt-4 mr-4 scale-75 xl:mt-8 xl:mr-8">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setModalOpen(false);
-            }}
-          >
-            <div
-              className={`close-button ${
-                modalOpen ? 'opacity-1' : 'opacity-0'
-              }`}
-              style={{
-                transition: modalOpen
-                  ? 'opacity 1s ease-out 300ms'
-                  : 'opacity 0.1s linear',
-              }}
-            ></div>
-          </button>
         </div>
       </div>
     </ModalContainer>
