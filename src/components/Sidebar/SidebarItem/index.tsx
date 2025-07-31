@@ -17,16 +17,6 @@ const SidebarLinks = [
     buttonId: 'DMexperience',
   },
   {
-    title: 'Technologies I Know',
-    elementId: 'tik',
-    buttonId: 'tech',
-  },
-  {
-    title: 'Playground',
-    elementId: 'pg',
-    buttonId: 'playground',
-  },
-  {
     title: 'Contact Me',
     elementId: 'cm',
     buttonId: 'contact',
@@ -37,7 +27,7 @@ const SidebarItems = () => {
   const renderSidebarLinks = SidebarLinks.map((item, index) => {
     return (
       <Button
-        containerClasses={`${index == 0 ? 'sm:pt-4 sm:pb-8 lg:pb-16 lg:pt-8' : 'sm:py-8 lg:py-16' }`}
+        containerClasses={``}
         title={`${item.title}`}
         elementId={`${item.elementId}`}
         buttonId={item.buttonId}
@@ -47,9 +37,7 @@ const SidebarItems = () => {
   });
 
   return (
-    <div className="p-3">
-      <div className="flex flex-col">{renderSidebarLinks}</div>
-    </div>
+    <div className="flex flex-col justify-between items-center h-full w-full fixed py-24">{renderSidebarLinks}</div>
   );
 };
 

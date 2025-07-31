@@ -38,9 +38,7 @@ const Container = () => {
         sidebarOpen ? '-translate-x-0' : '-translate-x-full'
       } lg:w-3/12 sm:w-8/12`}
     >
-      <div className="py-14 px-4 fixed">
-        <SidebarItems />
-      </div>
+      <SidebarItems />
       <div className="w-full">&nbsp;</div>
       <div className="flex items-center sticky justify-center h-screen">
         <div
