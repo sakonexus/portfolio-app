@@ -5,6 +5,7 @@ import LinkedInIcon from '/public/icons/linkedin-icon.svg';
 import EmailIcon from '/public/icons/envelope-icon.svg';
 
 const Hero = ({ heroRef }: {heroRef: React.RefObject<HTMLDivElement>}) => {
+
   return (
     <div
       ref={heroRef}

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'node:path';
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,6 +9,9 @@ export default defineConfig({
   server: {
     host: true,
     port: 3000,
+    proxy: {
+      '/api': 'http://localhost:5000',
+    },
   },
   define: {
     'process.env': {},

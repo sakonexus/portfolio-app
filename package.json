@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@portabletext/react": "^3.2.1",
     "@portabletext/to-html": "^2.0.14",
     "@sanity/image-url": "^1.0.2",

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Breakpoints */
@@ -36,4 +36,31 @@
   .scrollbar-default::-webkit-scrollbar {
     display: block;
   }
+}
+
+.radial-shift {
+  @apply w-full;
+  background: radial-gradient(circle at center, #ff4d4f, #40a9ff, #73d13d);
+  animation: radial-shift-animation 2s ease-in-out infinite;
+  background-size: 150% 150%;
+  background-repeat: no-repeat;
+}
+
+@keyframes radial-shift-animation {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    background-position: 0% 0%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+.rgb-border {
+  @apply bg-gradient-to-tr from-red-600 via-green-600 to-indigo-600;
 }
