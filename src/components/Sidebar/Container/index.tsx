@@ -43,7 +43,7 @@ const Container = () => {
       <div className="flex items-center sticky justify-center h-screen">
         <div
           className={`fixed top-auto bg-white/50 rounded-full shadow-slate-700 drop-shadow-lg transition ease-in-out duration-500 ${
-            sidebarOpen ? '' : 'absolute translate-x-4'
+            sidebarOpen ? '' : 'absolute translate-x-2'
           }`}
         >
           <div className="sm:w-16 sm:h-16 lg:w-24 lg:h-24 border-2 border-black/10 rounded-full shadow-md">
@@ -51,9 +51,11 @@ const Container = () => {
               onClick={(event) => {
                 toggleSidebar(event);
               }}
-              className={`focus:outline-none transform transition-transform duration-300 ${ sidebarOpen && 'scale-x-[-1]'}`}
+              className={`focus:outline-none transform transition-transform duration-300 ${sidebarOpen && 'scale-x-[-1]'}`}
             >
-              <span className='material-icons !text-8xl'>keyboard_arrow_right</span>
+              <span className="material-icons lg:!text-8xl sm:!text-6xl">
+                keyboard_arrow_right
+              </span>
             </button>
           </div>
         </div>
