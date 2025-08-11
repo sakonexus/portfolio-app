@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { verifyToken } from '../middleware/auth';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import { embedText } from '../lib/embed';
 
 dotenv.config();
 
@@ -62,6 +63,21 @@ router.post('/send-email', verifyToken, async (req: Request, res: Response) => {
     res.status(200).json({ status: 200, message: 'Email sent successfully' });
   } catch (error) {
     res.status(500).json({ status: 500, message: error });
+  }
+});
+
+router.post('/chat', async (req, res) => {
+  try {
+    const { question } = req.body;
+    if (!question)
+      return res.status(400).json({ error: 'No question provided' });
+
+    const answer = await embedText(question);
+
+    return res.json({ text: answer });
+  } catch (err) {
+    console.error('Chat error:', err);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
