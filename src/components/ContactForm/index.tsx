@@ -66,6 +66,7 @@ const ContactForm = () => {
             className={`text-xl focus:outline-0 bg-white h-14 rounded-lg px-2 w-full ${name.length === 0 ? 'font-semibold' : ''}`}
             type="text"
             name="name"
+            aria-label="name"
             onChange={(e) => updateName(e)}
             required
             placeholder="Name"
@@ -78,6 +79,7 @@ const ContactForm = () => {
             className={`text-xl focus:outline-0 bg-white h-14 rounded-lg px-2 w-full ${email.length === 0 ? 'font-semibold' : ''}`}
             type="email"
             name="email"
+            aria-label="email"
             onChange={(e) => updateEmail(e)}
             required
             placeholder="Email"
@@ -90,6 +92,7 @@ const ContactForm = () => {
             className={`bg-white focus:outline-0 h-14 rounded-lg  p-1 w-full text-xl ${message.length === 0 ? 'font-semibold' : ''}`}
             onChange={(e) => updateMessage(e)}
             name="message"
+            aria-label="email message"
             required
             placeholder="Message"
             minLength={10}
@@ -103,6 +106,7 @@ const ContactForm = () => {
             type="submit"
             className={`text-2xl font-semibold h-14 rounded-lg w-full transition-all duration-300 bg-white ${isFormValid ? 'hover:cursor-pointer hover:bg-amber-600 hover:text-white' : 'hover:cursor-not-allowed bg-zinc-300'}`}
             disabled={!isFormValid}
+            aria-label="Send Email Message"
           >
             Send
           </button>

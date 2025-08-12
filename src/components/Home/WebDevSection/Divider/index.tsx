@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { useGetViewportWidth } from '@/hooks/get-viewport-width.js';
+import { useGetViewportWidth } from '@/hooks/get-viewport-width';
 
 const WebDevSectionDivider = ({
   parentRef,

@@ -15,7 +15,7 @@ const router = Router();
 
 router.get('/token', (req, res) => {
   const payload = {
-    appId: 'my-super-secure-app-id',
+    appId: 'my-portfolio',
     role: 'anonymous',
   };
 

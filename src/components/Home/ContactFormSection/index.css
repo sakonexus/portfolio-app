@@ -1,10 +1,9 @@
-@keyframes moveDown {
+@keyframes point {
   0% {
     transform: translateY(0);
-    transform: translateX(0);
   }
   50% {
-    transform: translateY(1rem) rotate(-5deg);
+    transform: translateY(1rem) rotate(5deg);
   }
   100% {
     transform: translateY(0) rotate(0);
@@ -12,5 +11,5 @@
 }
 
 .finger-pointer {
-  animation: moveDown 1.5s ease-in-out infinite;
+  animation: point 1.5s ease-in-out infinite;
 }

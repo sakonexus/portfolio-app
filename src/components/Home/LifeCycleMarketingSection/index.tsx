@@ -40,8 +40,12 @@ export interface EmailCardDataProps {
   _key: string;
 }
 
-const LifeCycleMarketingSection = ({ section2 }: {section2: RefObject<HTMLDivElement>}) => {
-  const { height, width, widthSize } = useWindowDimensions();
+const LifeCycleMarketingSection = ({
+  marketingRef,
+}: {
+  marketingRef: RefObject<HTMLDivElement>;
+}) => {
+  const { widthSize } = useWindowDimensions();
   const [cardData, setCardData] = useState<null | Array<EmailCardDataProps>>(
     null
   );
@@ -94,7 +98,7 @@ const LifeCycleMarketingSection = ({ section2 }: {section2: RefObject<HTMLDivEle
 
   return (
     <div
-      ref={section2}
+      ref={marketingRef}
       id="dme"
       className={`relative w-full min-h-screen flex flex-col items-center bg-[url('./assets/paper-plane.svg')] overflow-visible z-[60]`}
       style={

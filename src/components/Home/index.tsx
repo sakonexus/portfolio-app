@@ -5,18 +5,18 @@ import LifeCycleMarketingSection from './LifeCycleMarketingSection';
 
 interface HomeProps {
   heroRef: React.RefObject<HTMLDivElement>;
-  section1: React.RefObject<HTMLDivElement>;
-  section2: React.RefObject<HTMLDivElement>;
-  section3: React.RefObject<HTMLDivElement>;
+  webdevRef: React.RefObject<HTMLDivElement>;
+  marketingRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
 }
 
-const Home = ({ heroRef, section1, section2, section3 }: HomeProps) => {
+const Home = ({ heroRef, webdevRef, marketingRef, contactRef }: HomeProps) => {
   return (
     <div className="flex flex-col w-full">
       <Hero heroRef={heroRef} />
-      <WebDevSection section1={section1} />
-      <LifeCycleMarketingSection section2={section2} />
-      <ContactFormSection section3={section3} />
+      <WebDevSection webdevRef={webdevRef} />
+      <LifeCycleMarketingSection marketingRef={marketingRef} />
+      <ContactFormSection contactRef={contactRef} />
     </div>
   );
 };

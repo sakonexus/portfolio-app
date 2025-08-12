@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react';
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+type WindowSizeCategory = 'sm' | 'md' | 'lg' | 'xl';
 
-  let widthSize = '';
+interface WindowDimensions {
+  width: number;
+  height: number;
+  widthSize: WindowSizeCategory;
+}
+
+function getWindowDimensions(): WindowDimensions {
+  if (typeof window === 'undefined') {
+    return { width: 0, height: 0, widthSize: 'sm' };
+  }
+
+  const { innerWidth: width, innerHeight: height } = window;
+  let widthSize: WindowSizeCategory;
 
   switch (true) {
     case width >= 280 && width < 768:
@@ -23,15 +34,11 @@ function getWindowDimensions() {
       break;
   }
 
-  return {
-    width,
-    height,
-    widthSize,
-  };
+  return { width, height, widthSize };
 }
 
-export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(
+export default function useWindowDimensions(): WindowDimensions {
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(
     getWindowDimensions()
   );
 

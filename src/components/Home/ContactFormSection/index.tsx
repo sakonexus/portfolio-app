@@ -3,13 +3,13 @@ import { RefObject } from 'react';
 import './index.css';
 
 const ContactFormSection = ({
-  section3,
+  contactRef,
 }: {
-  section3: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement>;
 }) => {
   return (
     <div
-      ref={section3}
+      ref={contactRef}
       id="cm"
       className="flex bg-gradient-to-b from-white to-blue-400 to-50% w-full h-screen items-center justify-center"
     >
