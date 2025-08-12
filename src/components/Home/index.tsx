@@ -1,4 +1,4 @@
-import Section from './Section';
+import ContactFormSection from './ContactFormSection';
 import Hero from './Hero';
 import WebDevSection from './WebDevSection';
 import LifeCycleMarketingSection from './LifeCycleMarketingSection';
@@ -10,18 +10,13 @@ interface HomeProps {
   section3: React.RefObject<HTMLDivElement>;
 }
 
-const Home = ({
-  heroRef,
-  section1,
-  section2,
-  section3,
-}: HomeProps) => {
+const Home = ({ heroRef, section1, section2, section3 }: HomeProps) => {
   return (
-    <div>
+    <div className="flex flex-col w-full">
       <Hero heroRef={heroRef} />
       <WebDevSection section1={section1} />
       <LifeCycleMarketingSection section2={section2} />
-      <Section section3={section3} />
+      <ContactFormSection section3={section3} />
     </div>
   );
 };
