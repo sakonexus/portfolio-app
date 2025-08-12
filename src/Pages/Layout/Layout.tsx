@@ -1,5 +1,5 @@
-import Sidebar from '../../components/Sidebar';
-import { useIntersectionObserver } from '../../hooks/intersection-observer';
+import Sidebar from '@/components/Sidebar';
+import { useIntersectionObserver } from '@/hooks/intersection-observer';
 import { MutableRefObject } from 'react';
 
 interface LayoutProps {

@@ -14,5 +14,5 @@ app.use(express.json());
 app.use('/api', apiRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`);
+  console.log(`Server listening on port: ${PORT}`);
 });

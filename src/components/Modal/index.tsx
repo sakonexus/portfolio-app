@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import { ReactNode } from 'react';
 
-const Modal = ({ modalOpen, setModalOpen, children }) => {
-  const closeModal = (e) => {
-    e.target.id == 'modal-overlay' && setModalOpen(false);
+const Modal = ({
+  modalOpen,
+  setModalOpen,
+  children,
+}: {
+  modalOpen: boolean;
+  setModalOpen: (arg0: boolean) => void;
+  children: ReactNode;
+}) => {
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target instanceof HTMLElement && e.target.id === 'modal-overlay') {
+      setModalOpen(false);
+    }
   };
 
   return (
