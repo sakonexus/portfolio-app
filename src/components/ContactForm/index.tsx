@@ -35,13 +35,13 @@ const ContactForm = () => {
       message: message,
     });
 
-    console.log('emailRes after send', emailRes);
-
     if (emailRes.status === 200) {
       setName('');
       setEmail('');
       setMessage('');
 
+      alert(emailRes.message);
+    } else {
       alert(emailRes.message);
     }
   };
