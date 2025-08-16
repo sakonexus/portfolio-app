@@ -1,15 +1,20 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
-export const useIntersectionObserver = (observeItems) => {
+type ObserveItem = MutableRefObject<Element | null>;
+
+interface IdToTargetMap {
+  [key: string]: string;
+}
+
+export const useIntersectionObserver = (observeItems: ObserveItem[]): void => {
   useEffect(() => {
-    const options = {
+    const options: IntersectionObserverInit = {
       rootMargin: '0px',
       threshold: 0.55,
       root: null,
     };
 
-    // The key is the id of the section and the value is the id of the sidebar link
-    const idToTargetMap = {
+    const idToTargetMap: IdToTargetMap = {
       am: 'about',
       wde: 'WDexperience',
       dme: 'DMexperience',
@@ -18,7 +23,7 @@ export const useIntersectionObserver = (observeItems) => {
       cm: 'contact',
     };
 
-    const toggleShadowLinkClass = (id, add) => {
+    const toggleShadowLinkClass = (id: string, add: boolean) => {
       const targetId = idToTargetMap[id];
       if (targetId) {
         const targetElement = document.getElementById(targetId);
@@ -29,38 +34,12 @@ export const useIntersectionObserver = (observeItems) => {
           } else {
             targetElement.classList.remove('shadow-link');
             targetElement.classList.remove('sidebar-selected');
-
           }
         }
       }
     };
 
-    const toggleCard = (id, isIntersecting) => {
-      const targetId = 'wde';
-
-      const targetElement = document.getElementById(targetId);
-      const cardElements =
-        document.getElementById('wd-card-container').childNodes;
-
-      if (targetElement.id == id && isIntersecting) {
-        cardElements.forEach((element, index) => {
-          if (index != 0) {
-            element.style.transitionDelay = (index * 100).toString() + 'ms';
-          }
-          element.classList.remove('opacity-0');
-          element.style.top = '0';
-        });
-
-        document.getElementById('wd-card-container').childNodes;
-      } else {
-        cardElements.forEach((element) => {
-          element.classList.add('opacity-0');
-          element.style.top = '60rem';
-        });
-      }
-    };
-
-    const observerCallback = (entries) => {
+    const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         const { id } = entry.target;
         if (entry.isIntersecting) {
@@ -85,13 +64,15 @@ export const useIntersectionObserver = (observeItems) => {
           target: element.current,
           isIntersecting: true, // Assume it's intersecting for initial load
           intersectionRatio: 1, // Assume fully intersecting for initial load
-          intersectionRect: element.current.getBoundingClientRect(), // Mock intersection rect
-          rootBounds: observer.rootBounds || null, // Mock root bounds
-          boundingClientRect: element.current.getBoundingClientRect(), // Mock bounding client rect
-          time: Date.now(), // Mock timestamp
-          root: observer.root || null, // Mock root element
+          intersectionRect: element.current.getBoundingClientRect(),
+          rootBounds: observer.root
+            ? (observer.root as Element).getBoundingClientRect()
+            : null,
+          boundingClientRect: element.current.getBoundingClientRect(),
+          time: Date.now(),
+          root: observer.root || null,
         };
-        observerCallback([mockEntry]);
+        observerCallback([mockEntry], observer);
       }
     });
 

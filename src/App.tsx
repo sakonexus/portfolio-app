@@ -4,31 +4,29 @@ import { MutableRefObject, useRef } from 'react';
 
 function App() {
   const heroRef = useRef(null);
-  const section1 = useRef(null);
-  const section2 = useRef(null);
-  const section3 = useRef(null);
+  const webdevRef = useRef(null);
+  const marketingRef = useRef(null);
+  const contactRef = useRef(null);
 
   const observeItems: MutableRefObject<HTMLElement | null>[] = [
     heroRef,
-    section1,
-    section2,
-    section3,
+    webdevRef,
+    marketingRef,
+    contactRef,
   ];
 
   return (
-    <>
-      <Layout
-        observeItems={observeItems}
-        content={
-          <Home
-            heroRef={heroRef}
-            section1={section1}
-            section2={section2}
-            section3={section3}
-          />
-        }
-      />
-    </>
+    <Layout
+      observeItems={observeItems}
+      content={
+        <Home
+          heroRef={heroRef}
+          webdevRef={webdevRef}
+          marketingRef={marketingRef}
+          contactRef={contactRef}
+        />
+      }
+    />
   );
 }
 

@@ -1,5 +1,5 @@
-import Sidebar from '../../components/Sidebar';
-import { useIntersectionObserver } from '../../hooks/intersection-observer.js';
+import Sidebar from '@/components/Sidebar';
+import { useIntersectionObserver } from '@/hooks/intersection-observer';
 import { MutableRefObject } from 'react';
 
 interface LayoutProps {
@@ -13,12 +13,10 @@ const Layout = (props: LayoutProps) => {
   useIntersectionObserver(observeItems);
 
   return (
-    <>
-      <div className="flex w-full">
-        <Sidebar />
-        <div className="w-full">{content ? content : <>none</>}</div>
-      </div>
-    </>
+    <main className="flex w-full">
+      <Sidebar />
+      <div className="w-full">{content ? content : <>none</>}</div>
+    </main>
   );
 };
 

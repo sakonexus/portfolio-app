@@ -1,0 +1,15 @@
+@keyframes point {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(1rem) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.finger-pointer {
+  animation: point 1.5s ease-in-out infinite;
+}

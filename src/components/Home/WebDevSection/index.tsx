@@ -1,6 +1,5 @@
 import { useState, useEffect, RefObject } from 'react';
 import WebDevSectionDivider from '../WebDevSection/Divider';
-// import { useElementInView } from '@hooks/element-in-view.js';
 import mongoDBImg from '../../../../public/images/i/wd-examples/icons/mongodb.svg';
 import tslImg from '../../../../public/images/i/wd-examples/icons/typescript.svg';
 import nextjsImg from '../../../../public/images/i/wd-examples/icons/nextjs.svg';
@@ -70,12 +69,15 @@ interface WebDevCardDataProps {
   _key: string;
 }
 
-const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
+const WebDevSection = ({
+  webdevRef,
+}: {
+  webdevRef: RefObject<HTMLDivElement>;
+}) => {
   const [cardData, setCardData] = useState<null | Array<WebDevCardDataProps>>(
     null
   );
   const [loading, setLoading] = useState(true);
-  // const { elementInView } = useElementInView(section1);
   const [sectionDividerHeight, setSectionDividerHeight] = useState(0);
   const [assignModal, setAssignModal] = useState<React.ReactElement>(
     <SimpleDetailCard
@@ -127,7 +129,7 @@ const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
 
   return (
     <div
-      ref={section1}
+      ref={webdevRef}
       id="wde"
       className="relative bg-indigo-600 w-full min-h-screen flex flex-col items-center"
       style={{
@@ -143,8 +145,10 @@ const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
               Scratch Skating
             </h1>
             <p className="text-2xl text-white my-8 xl:text-3xl">
-              Scratch Skating<sup>&trade;</sup> has been my passion project to contribute to the skateboard community and build on web development skills and have a deeper understanding of
-              web technologies.
+              Scratch Skating<sup>&trade;</sup> has been my passion project to
+              contribute to the skateboard community and build on web
+              development skills and have a deeper understanding of web
+              technologies.
             </p>
           </div>
           <div className="relative mt-14 flex flex-row flex-nowrap justify-center">
@@ -187,7 +191,7 @@ const WebDevSection = ({ section1 }: {section1: RefObject<HTMLDivElement>}) => {
         </div>
       </div>
       <WebDevSectionDivider
-        parentRef={section1}
+        parentRef={webdevRef}
         setSectionDividerHeight={setSectionDividerHeight}
       />
       {modalElement}

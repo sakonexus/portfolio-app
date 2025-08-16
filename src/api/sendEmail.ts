@@ -1,27 +1,45 @@
+import { baseUrl } from '@/lib/baseUrl';
+
 interface EmailData {
   email: string;
   name: string;
   message: string;
 }
 
+const BASE_URL = baseUrl();
+
 export const sendEmail = async (email_payload: EmailData) => {
   try {
-    const tokenResponse = await fetch('/api/token');
-    const jwtToken = await tokenResponse.json();
+    const tokenResponse = await fetch(`${BASE_URL}/token`, {
+      method: 'GET',
+    }).then((token) => token.json());
 
-    const emailResponse = await fetch(`/api/send-email`, {
+    const { token } = tokenResponse;
+
+    const sendEmailRes = await fetch(`${BASE_URL}/send-email`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${jwtToken.token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(email_payload),
-    });
+    }).then((res) => res.json());
 
-    const emailData = await emailResponse.json();
-    return emailData;
+    if (sendEmailRes.status === 200) {
+      return {
+        status: 200,
+        message: 'Email sent successfully.',
+      };
+    } else {
+      return {
+        status: 500,
+        message: 'Email was not sent.',
+      };
+    }
   } catch (error) {
-    return error;
-    throw error;
+    return {
+      status: 500,
+      message: error,
+    };
   }
 };

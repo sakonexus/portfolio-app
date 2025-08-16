@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export const useGetViewportWidth = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+export const useGetViewportWidth = (): { viewportWidth: number } => {
+  const [viewportWidth, setViewportWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 0
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,7 +17,5 @@ export const useGetViewportWidth = () => {
     };
   }, []);
 
-  return {
-    viewportWidth: viewportWidth,
-  };
+  return { viewportWidth };
 };
