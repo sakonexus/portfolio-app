@@ -12,7 +12,7 @@ const SidebarLinks = [
     buttonId: 'WDexperience',
   },
   {
-    title: 'Direct Marketing Experience',
+    title: 'Lifecycle Marketing Experience',
     elementId: 'dme',
     buttonId: 'DMexperience',
   },
@@ -37,7 +37,11 @@ const SidebarItems = () => {
   });
 
   return (
-    <div className="flex flex-col justify-between items-center h-full w-full fixed py-24">{renderSidebarLinks}</div>
+    <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-between items-center h-10/12 w-full fixed py-24">
+        {renderSidebarLinks}
+      </div>
+    </div>
   );
 };
 
