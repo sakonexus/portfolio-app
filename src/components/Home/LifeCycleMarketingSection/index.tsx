@@ -103,7 +103,7 @@ const LifeCycleMarketingSection = ({
       style={
         widthSize == 'xl'
           ? {
-              backgroundImage: `url(${paperPlaneImg})`,
+              backgroundImage: `url("${paperPlaneImg}")`,
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'top 75% right 1rem',
               backgroundSize: '30%',
@@ -111,14 +111,14 @@ const LifeCycleMarketingSection = ({
             }
           : widthSize == 'md'
             ? {
-                backgroundImage: `url(${paperPlaneImg})`,
+                backgroundImage: `url("${paperPlaneImg}")`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'top 75% right 1rem',
                 backgroundSize: '30%',
                 transition: 'background-position 500ms ease-in',
               }
             : {
-                backgroundImage: `url(${paperPlaneImg})`,
+                backgroundImage: `url("${paperPlaneImg}")`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'top 1.5rem right 1.5rem',
                 backgroundSize: '50%',
