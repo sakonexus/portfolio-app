@@ -15,7 +15,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <main className="flex w-full">
       <Sidebar />
-      <div className="w-full">{content ? content : <>none</>}</div>
+      <div className="w-full">{content ? content : <></>}</div>
     </main>
   );
 };

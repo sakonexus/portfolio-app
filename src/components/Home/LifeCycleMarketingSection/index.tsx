@@ -3,8 +3,8 @@ import responsysLogo from '../../../../public/images/i/email/responsys-logo.svg'
 import iterableLogo from '../../../../public/images/i/email/iterable-inc-logo-vector.svg';
 import sfmcLogo from '../../../../public/images/i/email/salesforce-marketing-cloud-logo.svg';
 import mcLogo from '../../../../public/images/i/email/mailchimp-logo.svg';
-import paperPlaneImg from './assets/paper-plane.svg';
-import marketingImage from './assets/marketing-image.svg';
+import paperPlaneImg from '@/components/Home/LifeCycleMarketingSection/assets/paper-plane.svg';
+import marketingImage from '@/components/Home/LifeCycleMarketingSection/assets/marketing-image.svg';
 import useWindowDimensions from '@/hooks/useWindowDimensions';
 import { useModal } from '@/hooks/use-modal.jsx';
 import { RefObject, useEffect, useState } from 'react';
