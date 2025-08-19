@@ -10,7 +10,7 @@ const Hero = ({ heroRef }: { heroRef: React.RefObject<HTMLDivElement> }) => {
       className="bg-gradient-to-b from-sky-600 from-60% to-indigo-600 w-full h-screen flex justify-center"
     >
       <div className="relative flex justify-start sm:flex-col lg:flex-row sm:top-0 sm:w-full lg:w-8/12 lg:top-[-7rem]">
-        <div className="flex flex-col justify-center lg:px-0 sm:px-10 sm:order-2 lg:order-1">
+        <div className="flex flex-col justify-center sm:items-center lg:items-start lg:px-0 sm:px-10 sm:order-2 lg:order-1">
           <div className="w-full lg:text-left sm:text-center">
             <h1 className=" font-semibold sm:text-4xl lg:text-6xl">
               Hi, I'm Sarkis!
