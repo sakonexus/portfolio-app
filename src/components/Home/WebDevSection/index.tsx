@@ -122,7 +122,6 @@ const WebDevSection = ({
       if (data) {
         setCardData(data[0].cards);
         setLoading(false);
-        console.log(data);
       }
     });
   }, []);

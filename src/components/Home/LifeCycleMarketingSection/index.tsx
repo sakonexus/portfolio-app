@@ -75,7 +75,6 @@ const LifeCycleMarketingSection = ({
       if (data) {
         setCardData(data[0].cards);
         setLoading(false);
-        console.log('email data', data);
       }
     });
   }, []);
@@ -100,7 +99,7 @@ const LifeCycleMarketingSection = ({
     <div
       ref={marketingRef}
       id="dme"
-      className={`relative w-full min-h-screen flex flex-col items-center bg-[url('./assets/paper-plane.svg')] overflow-visible z-[60]`}
+      className={`relative w-full min-h-screen flex flex-col items-center overflow-visible z-[60]`}
       style={
         widthSize == 'xl'
           ? {
