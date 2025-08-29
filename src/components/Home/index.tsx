@@ -2,6 +2,7 @@ import ContactFormSection from './ContactFormSection';
 import Hero from './Hero';
 import WebDevSection from './WebDevSection';
 import LifeCycleMarketingSection from './LifeCycleMarketingSection';
+import Footer from '../Footer';
 
 interface HomeProps {
   heroRef: React.RefObject<HTMLDivElement>;
@@ -17,6 +18,7 @@ const Home = ({ heroRef, webdevRef, marketingRef, contactRef }: HomeProps) => {
       <WebDevSection webdevRef={webdevRef} />
       <LifeCycleMarketingSection marketingRef={marketingRef} />
       <ContactFormSection contactRef={contactRef} />
+      <Footer />
     </div>
   );
 };

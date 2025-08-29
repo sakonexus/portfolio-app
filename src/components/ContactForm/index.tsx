@@ -59,11 +59,11 @@ const ContactForm = () => {
       <form
         ref={formRef}
         onSubmit={(e) => submitEmailContent(e)}
-        className="flex flex-col gap-y-8 w-full"
+        className="flex flex-col md:gap-y-8 w-full sm:gap-y-6"
       >
         <div className="rgb-border p-1 rounded-lg">
           <input
-            className={`text-xl focus:outline-0 bg-white h-14 rounded-lg px-2 w-full ${name.length === 0 ? 'font-semibold' : ''}`}
+            className={`text-xl focus:outline-0 bg-white md:h-14 rounded-lg px-2 w-full ${name.length === 0 ? 'font-semibold' : ''} sm:h-10`}
             type="text"
             name="name"
             aria-label="name"
@@ -76,7 +76,7 @@ const ContactForm = () => {
         </div>
         <div className="rgb-border p-1 rounded-lg">
           <input
-            className={`text-xl focus:outline-0 bg-white h-14 rounded-lg px-2 w-full ${email.length === 0 ? 'font-semibold' : ''}`}
+            className={`text-xl focus:outline-0 bg-white md:h-14 rounded-lg px-2 w-full ${email.length === 0 ? 'font-semibold' : ''} sm:h-10`}
             type="email"
             name="email"
             aria-label="email"
@@ -89,7 +89,7 @@ const ContactForm = () => {
         </div>
         <div className="rgb-border p-1 rounded-lg">
           <textarea
-            className={`bg-white focus:outline-0 h-14 rounded-lg  p-1 w-full text-xl ${message.length === 0 ? 'font-semibold' : ''}`}
+            className={`bg-white focus:outline-0 md:h-14 rounded-lg  p-1 w-full text-xl ${message.length === 0 ? 'font-semibold' : ''} sm:h-10`}
             onChange={(e) => updateMessage(e)}
             name="message"
             aria-label="email message"
@@ -104,7 +104,7 @@ const ContactForm = () => {
         >
           <button
             type="submit"
-            className={`text-2xl font-semibold h-14 rounded-lg w-full transition-all duration-300 bg-white ${isFormValid ? 'hover:cursor-pointer hover:bg-amber-600 hover:text-white' : 'hover:cursor-not-allowed bg-zinc-300'}`}
+            className={`text-2xl font-semibold mdh-14 rounded-lg w-full transition-all duration-300 bg-white ${isFormValid ? 'hover:cursor-pointer hover:bg-amber-600 hover:text-white' : 'hover:cursor-not-allowed bg-zinc-300'} sm:h-10`}
             disabled={!isFormValid}
             aria-label="Send Email Message"
           >
