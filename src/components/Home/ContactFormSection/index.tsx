@@ -19,7 +19,7 @@ const ContactFormSection = ({
           className="finger-pointer lg:w-60 sm:w-36"
         />
         <div className="flex flex-col text-center mx-auto align-middle bg-white py-8 px-4 rounded-xl border-zinc-400 drop-shadow-xl mt-6">
-          <div className="flex flex-col text-center justify-center pb-12 gap-y-4">
+          <div className="flex flex-col text-center justify-center md:pb-12 gap-y-4 sm:pb-8">
             <h1 className="lg:text-5xl font-semibold sm:text-4xl">
               Send me a message!
             </h1>
