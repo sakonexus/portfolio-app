@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const SIDEBAR_CONTAINER_ID = 'sidebar-container';
 
 const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
